@@ -8,8 +8,9 @@ import numpy as np
 import os
 import sys
 
-from brain.linear import Linear
-from brain.replay_buffer import ReplayBuffer
+from core.linear import Linear
+from core.replay_buffer import ReplayBuffer
+from core.dqn import DQN
 
 np.random.seed(0)
 torch.manual_seed(0)
@@ -48,7 +49,7 @@ class Agent:
         if self.learning_mode == 'V' or self.learning_mode == 'Q':
             self.linear = Linear(args, self.action_size, new_model_path)
         elif self.learning_mode == 'DQN':
-            from brain.dqn import DQN
+            #from core.dqn import DQN
             self.model = DQN(args, self.action_size, self.model_path)
         elif self.learning_mode == 'DDQN':
             pass
